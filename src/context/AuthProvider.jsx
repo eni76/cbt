@@ -6,7 +6,7 @@ const AuthProvider = ({ children }) => {
     fisrstName: "Sam",
     lastName: "Smith",
     email: "samsmith@gmail.com",
-    role: "student"
+    role: "teacher"
   });
   return (
   <AuthContext.Provider value={{user, setUser}}>

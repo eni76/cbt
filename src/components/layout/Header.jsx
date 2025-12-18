@@ -25,7 +25,7 @@ export default function Header() {
 
             <Link to={"/"} className="bg-[url('/images/klaxonimage.png')] bg-cover bg-center w-12 h-12 rounded-full ">
             </Link>
-            <Link to="/" className="text-lg font-bold ">CBT System</Link>
+            <Link to="/" className="text-lg font-bold "> KLAXON FORD CBT System</Link>
 
           </div>
 

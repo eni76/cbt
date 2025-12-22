@@ -18,11 +18,8 @@ export const registerUser = async (formData) => {
 
       console.log("data", response.data);
     } else {
-
       console.log("dataaa", response.data);
-  
     }
-
 
     return { ok: response.ok, data: response.data }; // typically contains { user, token }
   } catch (error) {
@@ -35,17 +32,18 @@ export const registerUser = async (formData) => {
   }
 };
 
-
-
-
-
-
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post(`${baseUrl}/login`, {
-      email,
-      password,
-    });
+    const response = await axios.post(
+      `${baseUrl}/login`,
+      {
+        email,
+        password,
+      },
+      {
+        withCredentials: true, // <--- this is required
+      }
+    );
 
     if (response.status === 200) {
       console.log("Login successful:", response.data);

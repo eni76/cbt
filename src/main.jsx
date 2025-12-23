@@ -13,6 +13,7 @@ import Services from './pages/Services.jsx'
 import Contact from './pages/Contact.jsx'
 import { AuthProvider } from './context/AuthProvider.jsx'
 import Dashboard from './pages/Dashboard/Dashboard.jsx'
+import VerifyEmail from './pages/Verifyemail.jsx'
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         element: <Dashboard />,
         path: "/dash"
+      },
+      {
+        element: <VerifyEmail />,
+        path: "/verifyemail/:token"
       }
     ]
   }

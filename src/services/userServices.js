@@ -3,32 +3,36 @@
 import { toast } from "react-toastify";
 import { baseUrl } from "../App";
 import axios from "axios";
-export const registerUser = async (formData) => {
-  console.log("form", formData);
 
+export const registerUser = async (formData) => {
   try {
     const response = await axios.post(`${baseUrl}/register`, formData, {
       headers: {
-        "Content-Type": "multipart/form-data", // important for file uploads
+        "Content-Type": "multipart/form-data",
       },
     });
-
-    if (response.status === 200 || response.status === 201) {
-      console.log("Registration successful");
-
-      console.log("data", response.data);
+    if (response.status == 200 || response.status == 201) {
+      return {
+        ok: true, // ✅ explicitly set success
+        data: response.data,
+      };
     } else {
-      console.log("dataaa", response.data);
+      return {
+        ok: false,
+        error: response.data.message || "Registration failed",
+      };
     }
-
-    return { ok: response.ok, data: response.data }; // typically contains { user, token }
   } catch (error) {
-    console.log("Error registration:", error);
-    if (error.response && error.response.data) {
-      return { ok: false, error: error.response.data.message };
-    } else {
-      throw new Error("Network error");
+    if (error.response?.data) {
+      return {
+        ok: false,
+        error: error.response.data.message,
+      };
     }
+    return {
+      ok: false,
+      error: "Network error",
+    };
   }
 };
 
@@ -45,7 +49,7 @@ export const loginUser = async (email, password) => {
       }
     );
 
-    if (response.status === 200) {
+    if (response.status === 200 || response.status === 201) {
       console.log("Login successful:", response.data);
       return { ok: true, data: response.data }; // { user, token, message? }
     } else {

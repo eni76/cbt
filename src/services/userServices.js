@@ -38,16 +38,10 @@ export const registerUser = async (formData) => {
 
 export const loginUser = async (email, password) => {
   try {
-    const response = await axios.post(
-      `${baseUrl}/login`,
-      {
-        email,
-        password,
-      },
-      {
-        withCredentials: true, // <--- this is required
-      }
-    );
+    const response = await axios.post(`${baseUrl}/login`, {
+      email,
+      password,
+    });
 
     if (response.status === 200 || response.status === 201) {
       console.log("Login successful:", response.data);

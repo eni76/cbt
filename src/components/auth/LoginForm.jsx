@@ -38,7 +38,9 @@ export default function LoginForm({ setLoading, loading }) {
         toast.success(res.data.message || "Login successful");
         setUser(res.data.user);
         setToken(res.data.token);
-        navigate("/dashboard");
+        localStorage.setItem("token", res.data.token);
+        console.log("daa", res?.data);
+        
       } else {
         toast.error(res.error || "Login failed");
       }
@@ -55,7 +57,7 @@ export default function LoginForm({ setLoading, loading }) {
         onSubmit={submit}
         className="p-6 space-y-5 bg-white rounded-lg shadow-lg sm:p-8"
       >
-      
+
 
         <CustomInput
           label="Email"

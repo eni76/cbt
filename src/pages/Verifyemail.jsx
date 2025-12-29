@@ -14,7 +14,7 @@ export default function VerifyEmail() {
     useEffect(() => {
         const verifyEmail = async () => {
             try {
-                const res = await axios.get(
+                const res = await axios.post(
                     `${baseUrl}/verifyemail/${token}`
                 );
 

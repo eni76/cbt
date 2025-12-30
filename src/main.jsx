@@ -14,6 +14,9 @@ import Contact from './pages/Contact.jsx'
 import { AuthProvider } from './context/AuthProvider.jsx'
 import Dashboard from './pages/Dashboard/Dashboard.jsx'
 import VerifyEmail from './pages/Verifyemail.jsx'
+import ForgetPass from './pages/ForgotPassWord.jsx'
+import ResetPassword from './pages/Verifyemail.jsx'
+import ResetPasswordPage from './pages/ResetPassword.jsx'
 
 
 const router = createBrowserRouter([
@@ -42,10 +45,6 @@ const router = createBrowserRouter([
         path: "/about"
       },
       {
-        element: <About />,
-        path: "/about"
-      },
-      {
         element: <Services />,
         path: "/services"
       },
@@ -60,6 +59,14 @@ const router = createBrowserRouter([
       {
         element: <VerifyEmail />,
         path: "/verifyemail/:token"
+      },
+      {
+        element: <ForgetPass />,
+        path: "/forgotpassword"
+      },
+      {
+        element: <ResetPasswordPage />,
+        path: "/resetpassword/:token"
       }
     ]
   }

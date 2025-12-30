@@ -38,9 +38,9 @@ export default function LoginForm({ setLoading, loading }) {
         toast.success(res.data.message || "Login successful");
         setUser(res.data.user);
         setToken(res.data.token);
-        localStorage.setItem("token", res.data.token);
+        navigate("/");
         console.log("daa", res?.data);
-        
+
       } else {
         toast.error(res.error || "Login failed");
       }
@@ -94,7 +94,7 @@ export default function LoginForm({ setLoading, loading }) {
             </Link>
           </p>
           <p>
-            <Link to="/forgot-password" className="text-green-600 hover:underline">
+            <Link to="/forgotpassword" className="text-green-600 hover:underline">
               Forgot Password?
             </Link>
           </p>

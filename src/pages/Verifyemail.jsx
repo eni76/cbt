@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import { baseUrl } from "../App";
 
 export default function VerifyEmail() {
     const { token } = useParams()
-    
+    const navigate = useNavigate()
 
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState("verifying"); // verifying | success | error
@@ -21,6 +21,10 @@ export default function VerifyEmail() {
                 if (res.data.success) {
                     setStatus("success");
                     setMessage(res.data.message || "Email verified successfully");
+                    setTimeout(() => {
+                        navigate("/login");
+                    }, 2000)
+
                 } else {
                     setStatus("error");
                     setMessage(res.data.message || "Verification failed");
